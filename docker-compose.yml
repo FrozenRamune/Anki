@@ -1,0 +1,39 @@
+services:
+  web:
+    restart: always
+    build: .
+    container_name: 'anki-web'
+    ports:
+      - "8000:8000"
+      - "3000:3000"
+    env_file: 
+      - .env_dev
+      - .env
+    depends_on:
+      - db
+    tty: true
+    volumes:
+      - ./webapp:/opt/webapp
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGPASSWORD: postgres
+      POSTGRES_DB: anki
+      TZ: "Asia/Tokyo"
+  pgadmin:
+    image: dpage/pgadmin4
+    ports: 
+      - "81:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@example.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    depends_on:
+      - db
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
