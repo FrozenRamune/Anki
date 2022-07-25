@@ -1,7 +1,9 @@
 services:
   web:
     restart: always
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
     container_name: 'anki-web'
     ports:
       - "8000:8000"

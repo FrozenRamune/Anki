@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+def login(request):
+    return render(request, 'accounts/login.html')
 
-def index(request):
-    print('OK')
-    return HttpResponse("Hello, world. You're at the react_app index.")
+@login_required
+def home(request):
+    return render(request, 'accounts/home.html')
