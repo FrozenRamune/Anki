@@ -142,6 +142,8 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
 ]
 
+SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['nickname',]
+
 SOCIAL_AUTH_PIPELINE = (
     'middleware.pipeline.validate_email',
     'social_core.pipeline.social_auth.social_details',
@@ -153,11 +155,12 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
+    'middleware.pipeline.set_nickname',
 )
 
-LOGIN_URL = '/accounts/login'
+LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = '/accounts/home'
-LOGOUT_URL = '/accounts/logout'
-LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGOUT_URL = 'accounts:logout'
+LOGOUT_REDIRECT_URL = 'accounts:login'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
