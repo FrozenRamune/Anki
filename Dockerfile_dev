@@ -1,23 +1,27 @@
+FROM node:18 as node
 FROM python:3
 USER root
 
-RUN apt-get update
-RUN apt-get -y install locales && \
-    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
-ENV TERM xterm
+COPY --from=node /opt/yarn-v* /opt/yarn
+COPY --from=node /usr/local/bin/node /usr/local/bin/
+COPY --from=node /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
+RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
+  && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarnpkg \
+  && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+  && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+  && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx
 
-RUN apt-get -y install tree
-
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g yarn
+RUN apt-get update \
+  && apt-get -y install locales tree \
+  && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8 \
+  LANGUAGE ja_JP:ja \
+  LC_ALL ja_JP.UTF-8 \
+  TZ JST-9 \
+  TERM xterm
 
 RUN pip install --upgrade pip
 RUN mkdir -p /opt/webapp
-COPY requirements.txt /opt/webapp
 WORKDIR /opt/webapp
+COPY requirements.txt .
 RUN pip install -r requirements.txt
