@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_front=self.webpackChunkreact_front||[]).push([[33],{33:(e,t,a)=>{a.a(e,(async(e,n)=>{try{a.r(t),a.d(t,{App:()=>c});var r=(await a.e(294).then(a.t.bind(a,294,19))).default,c=function(){return r.createElement("div",null,"Hello World!")};n()}catch(e){n(e)}}),1)}}]);
