@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: {
-        'home/home': './src/home/index.tsx'
+        'home/home': './src/home/index.jsx'
     },
     output: {
         path: path.join(__dirname, '../Anki/static'),
@@ -12,7 +12,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -20,14 +20,10 @@ module.exports = {
                         options: {
                             presets: ['@babel/preset-env', '@babel/react'],
                             plugins: [
-                                ['@babel/plugin-proposal-class-properties', { loose: true }], // 追加
+                                ['@babel/plugin-proposal-class-properties', { loose: true }],
+                                ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
+                                ["@babel/plugin-proposal-private-methods", { "loose": true }],
                             ],
-                        },
-                    },
-                    {
-                        loader: 'ts-loader',
-                        options: {
-                            configFile: path.resolve(__dirname, 'tsconfig.json'),
                         },
                     },
                 ]
@@ -57,7 +53,7 @@ module.exports = {
         hot: true,
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json'],
+        extensions: ['.js', '.jsx', '.json'],
     },
     target: 'web',
     experiments: {
