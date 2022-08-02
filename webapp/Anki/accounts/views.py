@@ -1,14 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect, reverse
-from django.contrib.auth.decorators import login_required
 from .forms import NicknameForm
 
 def login(request):
     return render(request, 'accounts/login.html', { 'next': '?next=' + request.GET['next'] if 'next' in request.GET else ''})
-
-def home(request):
-    return render(request, 'accounts/home.html')
 
 def get_nickname(request):
     if request.method == 'POST':

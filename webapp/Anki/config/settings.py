@@ -159,7 +159,7 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 LOGIN_URL = 'accounts:login'
-LOGIN_REDIRECT_URL = '/accounts/home'
+LOGIN_REDIRECT_URL = 'home:home'
 LOGOUT_URL = 'accounts:logout'
 LOGOUT_REDIRECT_URL = 'accounts:login'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']

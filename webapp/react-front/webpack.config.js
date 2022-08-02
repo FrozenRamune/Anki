@@ -2,11 +2,12 @@ const path = require('path');
 
 module.exports = {
     mode: 'production',
-    entry: './src/index.tsx',
+    entry: {
+        'home/home': './src/home/index.tsx'
+    },
     output: {
-        path: path.join(__dirname, '../Anki/static/home'),
-        publicPath: '/',
-        filename: 'main.js',
+        path: path.join(__dirname, '../Anki/static'),
+        filename: '[name].bundle.js',
     },
     module: {
         rules: [
@@ -16,7 +17,12 @@ module.exports = {
                 use: [
                     {
                         loader: 'babel-loader',
-                        options: { presets: ['@babel/preset-env', '@babel/react'] },
+                        options: {
+                            presets: ['@babel/preset-env', '@babel/react'],
+                            plugins: [
+                                ['@babel/plugin-proposal-class-properties', { loose: true }], // 追加
+                            ],
+                        },
                     },
                     {
                         loader: 'ts-loader',

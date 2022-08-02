@@ -1,3 +1,4 @@
+{% load static %}
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
@@ -7,6 +8,6 @@
     </head>
     <body>
         <div id="root"></div>
-        <script defer src="main.js"></script>
+        <script defer src="{% static 'home/home.bundle.js' %}"></script>
     </body>
 </html>
