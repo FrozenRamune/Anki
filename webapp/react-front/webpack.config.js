@@ -3,11 +3,12 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     entry: {
-        'home/home': './src/home/index.jsx'
+        'home/home': './src/home/index.js'
     },
     output: {
         path: path.join(__dirname, '../Anki/static'),
         filename: '[name].bundle.js',
+        chunkFilename: 'modules/[name].bundle.js',
     },
     module: {
         rules: [
@@ -29,6 +30,17 @@ module.exports = {
                 ]
             },
             {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                ]
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     {
@@ -41,6 +53,11 @@ module.exports = {
                         loader: 'sass-loader',
                     },
                 ]
+            },
+            {
+                test: /\.svg$/,
+                issuer: /\.[jt]sx?$/,
+                use: [ '@svgr/webpack' ]
             }
         ]
     },

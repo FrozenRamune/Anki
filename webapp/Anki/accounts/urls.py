@@ -5,8 +5,8 @@ from . import views
 
 app_name = 'accounts'
 urlpatterns = [
-    path('login/', views.login, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('', RedirectView.as_view(url='login')),
+    path('signin/', views.login, name='signin'),
+    path('signout/', auth_views.LogoutView.as_view(), name='signout'),
+    path('', RedirectView.as_view(url='signin')),
     path('set_nickname/', views.get_nickname, name='set_nickname')
 ]

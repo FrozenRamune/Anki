@@ -158,9 +158,9 @@ SOCIAL_AUTH_PIPELINE = (
     'middleware.pipeline.set_nickname',
 )
 
-LOGIN_URL = 'accounts:login'
+LOGIN_URL = 'accounts:signin'
 LOGIN_REDIRECT_URL = 'home:home'
-LOGOUT_URL = 'accounts:logout'
-LOGOUT_REDIRECT_URL = 'accounts:login'
+LOGOUT_URL = 'accounts:signout'
+LOGOUT_REDIRECT_URL = 'accounts:signin'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
