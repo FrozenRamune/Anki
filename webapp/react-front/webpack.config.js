@@ -1,26 +1,41 @@
-const path = require('path');
+const path = require('path')
+
+const IS_DEV = process.env.DEVELOPMENT != null
 
 module.exports = {
-    mode: 'development',
+    mode: IS_DEV ? 'development' : 'production',
+    devtool: IS_DEV ? 'inline-source-map' : 'hidden-nosources-source-map',
     entry: {
-        'home/home': './src/home/index.js'
+        'home/home': './src/home/index.jsx'
     },
     output: {
-        path: path.join(__dirname, '../Anki/static'),
+        path: path.join(__dirname, IS_DEV ? '../Anki/static' : 'dist'),
         filename: '[name].bundle.js',
         chunkFilename: 'modules/[name].bundle.js',
+    },
+    resolve: {
+        modules: [path.join(__dirname, 'node_modules')],
+        alias: {
+            '@': path.join(__dirname, './src'),
+        },
+        extensions: ['.ts', '.tsx', '.d.ts', '.js'],
+    },
+    watchOptions: {
+        ignored: /node_modules/,
+        aggregateTimeout: 300,
+        poll: 5000
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
                 use: [
                     {
                         loader: 'babel-loader',
                         options: {
                             presets: ['@babel/preset-env', '@babel/react'],
                             plugins: [
+                                ['babel-plugin-direct-import', { modules: ['@mui/material', '@mui/icons-material'] }],
                                 ['@babel/plugin-proposal-class-properties', { loose: true }],
                                 ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
                                 ["@babel/plugin-proposal-private-methods", { "loose": true }],
@@ -32,42 +47,33 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
                 ]
             },
             {
-                test: /\.scss$/,
+                test: [/\.scss$/, /\.sass$/],
                 use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'sass-loader',
-                    },
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader' },
                 ]
             },
             {
                 test: /\.svg$/,
                 issuer: /\.[jt]sx?$/,
-                use: [ '@svgr/webpack' ]
+                use: [
+                    { loader: '@svgr/webpack' },
+                ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
             }
         ]
-    },
-    devServer: {
-        static: {
-            directory: path.join(__dirname, '../Anki/static/home'),
-        },
-        host: '0.0.0.0',
-        port: 3000,
-        hot: true,
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
