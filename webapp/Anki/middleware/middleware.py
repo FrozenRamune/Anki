@@ -1,12 +1,19 @@
 from django.utils.deprecation import MiddlewareMixin
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import redirect, reverse
 import re
+import json
 
 PUBLIC_PAGE = [r'/accounts(/|$).*', r'/social-auth(/|$).*', r'/admin(/|$).*']
 
 class LoginRquiredMiddleware(MiddlewareMixin):
     def process_response(self, request, response):
+        if re.match(r'/api(/|$).*', request.path) is not None:
+            if request.method == "POST":
+                print('api called')
+                if not request.user.is_authenticated:
+                    return JsonResponse({}, status=401)
+                return response
         if not any([re.match(s, request.path) is not None for s in PUBLIC_PAGE]):
             print(request.path)
             if not request.user.is_authenticated:

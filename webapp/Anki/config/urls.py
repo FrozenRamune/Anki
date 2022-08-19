@@ -19,6 +19,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls', namespace='api')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     re_path(r'^accounts/?$', RedirectView.as_view(url='accounts/signin')),
     path('social-auth/', include('social_django.urls', namespace='social')),

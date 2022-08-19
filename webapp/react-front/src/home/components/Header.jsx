@@ -1,10 +1,19 @@
 import React from 'react'
 import { alpha, styled } from '@mui/material/styles'
-import { Tabs, Tab, Box, AppBar, Toolbar, IconButton, Typography, Collapse, Input, InputBase, Badge, Menu, MenuItem } from '@mui/material'
-import { Menu as MenuIcon, Search as SearchIcon, Mail as MailIcon, Notifications as NotificationsIcon, AccountCircle, More as MoreIcon, Navigation } from '@mui/icons-material'
+import {
+  Tabs, Tab, Box, AppBar, Toolbar, IconButton, Typography,
+  Collapse, Input, InputBase, Badge, Menu, MenuItem
+} from '@mui/material'
+import {
+  Menu as MenuIcon, Search as SearchIcon, Mail as MailIcon,
+  Notifications as NotificationsIcon, AccountCircle, More as MoreIcon, Navigation
+} from '@mui/icons-material'
 import { useNavigate } from "react-router-dom"
 
 export default () => {
+
+  const tab_contents = [['Home', '/'], ['Create', '/create_contents']]
+
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
   const [tab_value, set_tab_value] = React.useState(0)
@@ -34,6 +43,7 @@ export default () => {
 
   const handleTabChange = (event, newValue) => {
     set_tab_value(newValue)
+    navigation(tab_contents[newValue][1])
   }
 
   const handleMoveToTop = () => {
@@ -42,6 +52,10 @@ export default () => {
 
   const handleMoveToCreateContents = () => {
     navigation('/create_contents')
+  }
+
+  const handleSignOut = () => {
+    window.location = '/accounts/signout/'
   }
 
   const menuId = 'primari-search-account-menu'
@@ -61,7 +75,11 @@ export default () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem disableRipple divider sx={{ paddingLeft: '0', display: { xs: 'none', sm: 'flex' } }}>
+      <MenuItem
+        disableRipple
+        divider
+        sx={{ paddingLeft: '0', display: { xs: 'none', sm: 'flex' } }}
+      >
         <IconButton
           aria-label="account icon"
           color="inherit"
@@ -78,6 +96,7 @@ export default () => {
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
     </Menu>
   )
 
@@ -118,7 +137,11 @@ export default () => {
       </MenuItem>
       <MenuItem disableRipple sx={{ paddingLeft: '20px', paddingRight: '30px' }}>
         <SearchIcon />
-        <Input placeholder="検索" inputProps={{ 'aria-label': 'search contents' }} sx={{ paddingLeft: '5px' }} />
+        <Input
+          placeholder="検索"
+          inputProps={{ 'aria-label': 'search contents' }}
+          sx={{ paddingLeft: '5px' }}
+        />
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -155,7 +178,13 @@ export default () => {
     }
   
     return (
-      <Box sx={{ display: 'flex', borderRadius: '24px', backgroundColor: `rgba(0, 0, 0, ${checked ? 0.1 : 0})`}}>
+      <Box
+        sx={{
+          display: 'flex',
+          borderRadius: '24px',
+          backgroundColor: `rgba(0, 0, 0, ${checked ? 0.1 : 0})`
+        }}
+      >
         {checked
           ? <SearchIcon sx={{ margin: '12px' }} />
           : <IconButton
@@ -168,7 +197,11 @@ export default () => {
             </IconButton>
         }
         <Collapse orientation="horizontal" in={checked}>
-          <InputBase placeholder="検索" sx={{ marginRight: '24px', marginTop: '8px', color: 'white'}} inputProps={{ 'aria-label': 'search contents'}} />
+          <InputBase
+            placeholder="検索"
+            sx={{ marginRight: '24px', marginTop: '8px', color: 'white'}}
+            inputProps={{ 'aria-label': 'search contents'}}
+          />
         </Collapse>
       </Box>
     )
@@ -194,12 +227,36 @@ export default () => {
           >
             Anki
           </Typography>
-          <Tabs indicatorColor="secondary" textColor="inherit" value={tab_value} onChange={handleTabChange} aria-label="page tab">
-            <Tab color="inherit" label="Top" id="tab-top" aria-controls="tab-top" onClick={handleMoveToTop} />
-            <Tab color="inherit" label="Create" id="tab-create" aria-controls="tab-create" onClick={handleMoveToCreateContents} />
+          <Tabs
+            indicatorColor="secondary"
+            textColor="inherit"
+            value={
+              tab_contents.length - 1
+                - tab_contents.slice().reverse().findIndex(
+                  ([_, url]) => location.pathname.startsWith(url)
+                )
+            }
+            onChange={handleTabChange}
+            aria-label="page tab"
+          >
+            { tab_contents.map(([content, _]) =>
+              <Tab
+                color="inherit"
+                label={content}
+                id={`tab-${content}`}
+                key={`tab-${content}`}
+                aria-controls={`tab-${content}`}
+              />
+            )}
           </Tabs>
           <Box sx={{ flexGrow: 20 }} />
-          <Box sx={{ flexGrow: 1, justifyContent: 'space-between', display: { xs: 'none', sm: 'flex' } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              justifyContent: 'space-between',
+              display: { xs: 'none', sm: 'flex' }
+            }}
+          >
             <SearchBox />
             <IconButton
               size="large"
