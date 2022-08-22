@@ -1,0 +1,105 @@
+1660916724024	geckodriver	INFO	Listening on 127.0.0.1:46913
+1660916724527	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "43089" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilenfhNUI"
+*** You are running in headless mode.
+
+(firefox:6937): Gtk-WARNING **: 13:45:24.549: Locale not supported by C library.
+	Using the fallback 'C' locale.
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: libEGL missing
+1660916724758	Marionette	INFO	Marionette enabled
+1660916724763	Marionette	INFO	Listening on port 38103
+WebDriver BiDi listening on ws://localhost:43089
+Read port: 38103
+Read port: 38103
+1660916726137	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilenfhNUI/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:43089/devtools/browser/0985a119-83bd-4781-82e9-7fac4cd22f08
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://tr.snapchat.com"
+1660916766637	geckodriver	INFO	Listening on 127.0.0.1:45217
+1660916766642	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "41945" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilep7aFMN"
+*** You are running in headless mode.
+
+(firefox:7201): Gtk-WARNING **: 13:46:06.664: Locale not supported by C library.
+	Using the fallback 'C' locale.
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: libEGL missing
+1660916766893	Marionette	INFO	Marionette enabled
+1660916766898	Marionette	INFO	Listening on port 34649
+WebDriver BiDi listening on ws://localhost:41945
+Read port: 34649
+1660916768146	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilep7aFMN/search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 767))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 421))
+DevTools listening on ws://localhost:41945/devtools/browser/7dbcb595-ac42-40cf-8fff-1784b0310f2e
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://tr.snapchat.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660916864049	geckodriver	INFO	Listening on 127.0.0.1:47915
+1660916864127	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "60749" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileaaOIRQ"
+*** You are running in headless mode.
+
+(firefox:7480): Gtk-WARNING **: 13:47:44.271: Locale not supported by C library.
+	Using the fallback 'C' locale.
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: libEGL missing
+1660916865015	Marionette	INFO	Marionette enabled
+1660916865018	Marionette	INFO	Listening on port 46101
+WebDriver BiDi listening on ws://localhost:60749
+Read port: 46101
+1660916866626	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileaaOIRQ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:60749/devtools/browser/a5e31e38-1107-4d43-8c8d-dc53ca139743
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://tr.snapchat.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660916905195	Marionette	INFO	Stopped listening on port 46101
+1660917434527	geckodriver	INFO	Listening on 127.0.0.1:33455
+1660917435030	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "39315" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileMmLCEY"
+*** You are running in headless mode.
+
+(firefox:7834): Gtk-WARNING **: 13:57:15.089: Locale not supported by C library.
+	Using the fallback 'C' locale.
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: libEGL missing
+1660917435968	Marionette	INFO	Marionette enabled
+1660917435972	Marionette	INFO	Listening on port 42123
+WebDriver BiDi listening on ws://localhost:39315
+Read port: 42123
+Read port: 42123
+1660917437359	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileMmLCEY/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:39315/devtools/browser/1893516a-686d-423c-8f7c-6537c51376f2
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://tr.snapchat.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660917470834	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1660917478069	Marionette	INFO	Stopped listening on port 42123
+!!! error running onStopped callback: TypeError: callback is not a function
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

@@ -1,9 +1,11 @@
 FROM node:18 as node
+FROM python:3 as python
 
 FROM selenium/standalone-firefox
 
 USER root
 
+COPY --from=python /usr/local /usr/local
 COPY --from=node /opt/yarn-v* /opt/yarn
 COPY --from=node /usr/local/bin/node /usr/local/bin/
 COPY --from=node /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
@@ -11,11 +13,17 @@ RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarnpkg \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
-  && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx
+  && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx \
+  && ls /usr/local/lib/libpython3* | xargs ln -s -t /lib
 
 RUN apt-get update \
-  && apt-get -y install locales tree python3 python3-pip \
+  && apt-get -y install locales tree \
   && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+
+RUN mkdir -p /opt/webapp
+
+USER 1200:1201
+
 ENV LANG ja_JP.UTF-8 \
   LANGUAGE ja_JP:ja \
   LC_ALL ja_JP.UTF-8 \
@@ -24,9 +32,7 @@ ENV LANG ja_JP.UTF-8 \
   SE_START_XVFB false
 
 RUN pip install --upgrade pip
-RUN mkdir -p /opt/webapp
 WORKDIR /opt/webapp
 COPY ./webapp/Anki/requirements.txt ./Anki/
-RUN pip install -r ./Anki/requirements.txt
-
-USER 1200:1201
+RUN pip install -r ./Anki/requirements.txt --no-deps
+#libpq-dev pkg-config libcairo2-dev gcc libgirepository1.0-dev libdbus-1-dev
