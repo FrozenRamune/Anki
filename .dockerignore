@@ -1,6 +1,6 @@
 .env
 .env_dev
-webapp/react-front/node_modules
+webapp
 .git
 .gitignore
 docker-compose.yml

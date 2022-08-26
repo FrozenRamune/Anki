@@ -15,7 +15,15 @@ services:
       - postgres
     tty: true
     volumes:
-      - ./webapp:/opt/webapp
+      - ./Django:/opt/webapp
+  react:
+    image: node:18
+    volumes:
+      - ./React:/opt/react-front
+      - ./Django/static:/opt/react-front/dist
+    tty: true
+    container_name: 'react'
+    working_dir: /opt/react-front
   postgres:
     image: postgres:latest
     ports:
