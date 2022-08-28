@@ -103,3 +103,29 @@ Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1661682782828	geckodriver	INFO	Listening on 127.0.0.1:35785
+1661682783227	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "37921" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileiDb5Ch"
+*** You are running in headless mode.
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: libEGL missing
+1661682790608	Marionette	INFO	Marionette enabled
+1661682790647	Marionette	INFO	Listening on port 33229
+WebDriver BiDi listening on ws://localhost:37921
+Read port: 33229
+Read port: 33229
+1661682792627	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileiDb5Ch/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:37921/devtools/browser/df9aa380-90ea-4224-b817-dadf45febb54
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://tr.snapchat.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://quizlet.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1661682868197	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1661682874999	Marionette	INFO	Stopped listening on port 33229
+!!! error running onStopped callback: TypeError: callback is not a function
+console.error: (new Error("SessionFile is closed", "resource:///modules/sessionstore/SessionFile.jsm", 381))

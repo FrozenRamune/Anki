@@ -6,7 +6,8 @@ module.exports = {
     mode: IS_DEV ? 'development' : 'production',
     devtool: IS_DEV ? 'inline-source-map' : 'hidden-nosources-source-map',
     entry: {
-        'home/home': './src/home/index.jsx'
+        'home/home': './src/home/index.jsx',
+        'match/match': './src/match/index.jsx'
     },
     output: {
         path: path.join(__dirname, 'dist'),

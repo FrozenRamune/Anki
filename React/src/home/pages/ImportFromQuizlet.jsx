@@ -21,7 +21,7 @@ export default () => {
     console.log(`submit: ${data.url}`)
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
-    axios.post('/api/import', {
+    axios.post('/api/import/', {
       url: data.url
     })
     .then(response => {

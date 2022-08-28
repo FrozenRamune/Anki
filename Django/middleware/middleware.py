@@ -8,9 +8,11 @@ PUBLIC_PAGE = [r'/accounts(/|$).*', r'/social-auth(/|$).*', r'/admin(/|$).*']
 
 class LoginRquiredMiddleware(MiddlewareMixin):
     def process_response(self, request, response):
-        if request.path.endsWith('/'):
-            if '?' in request.get_full_path:
-                
+        if not request.path.endswith('/'):
+            if len(request.GET) == 0:
+                return redirect(request.path + '/')
+            else:
+                return redirect('/?'.join(request.get_full_path.split('?')))
         if re.match(r'/api(/|$).*', request.path) is not None:
             if request.method == "POST":
                 print('api called')

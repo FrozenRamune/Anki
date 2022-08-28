@@ -24,6 +24,8 @@ services:
     tty: true
     container_name: 'react'
     working_dir: /opt/react-front
+    environment:
+      - 'DEVELOPMENT': 'True'
   postgres:
     image: postgres:latest
     ports:
